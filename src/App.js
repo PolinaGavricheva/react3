@@ -3,25 +3,32 @@ import Header from './components/Header/Header';
 import Profile from './components/Profile/Profile';
 import Dialogs from "./components/Dialogs/Dialogs";
 import Settings from "./components/Settings/Settings";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import React from 'react';
 import './App.css';
+import store from "./Redux/state";
 
 const App = (props) => {
+
     return(
-        <BrowserRouter>
-            <div className="app-wrapper">
-                <Header />
-                <Navbar />
-                <div className="app-wrapper-content">
-                    <Route path="/profile" component={Profile} />
-                    <Route path="/message" component={Dialogs} />
-                    <Route path="/news" component={News} />
-                    <Route path="/settings" component={Settings} />
-                </div>
+        <div className="app-wrapper">
+            <Header />
+            <Navbar />
+            <div className="app-wrapper-content">
+                <Route path="/message"
+                       render={ () => <Dialogs
+                           store={props.store} /> }
+                />
+                <Route path="/profile"
+                       render={ () => <Profile
+                            dispatch={props.dispatch}
+                            profilePage={props.state.profilePage} /> }
+                />
+                <Route path="/settings" render={ () => <Settings /> } />
+                <Route path="/news" render={ () => <News /> } />
             </div>
-        </BrowserRouter>
+        </div>
     );
 }
 
