@@ -1,5 +1,5 @@
-import profileReducer from '../Redux/profile-reducer';
-import dialogsReducer from '../Redux/dialogs-reducer';
+import profileReducer from './profile-reducer';
+import messageReducer from './message-reducer';
 
 let store = {
     _state: {
@@ -42,9 +42,8 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        //this._state.profilePage = profileReducer(this._state.profilePage, action);
-        //this._state.messagePage = dialogsReducer(this._state.messagePage, action);
-
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.messagePage = messageReducer(this._state.messagePage, action);
         this._callSubscriber(this._state);
     }
 }

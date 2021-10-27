@@ -1,29 +1,28 @@
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+import Settings from "./components/Settings/Settings";
 import Navbar from "./components/Navbar/Navbar";
 import Header from './components/Header/Header';
-import Profile from './components/Profile/Profile';
-import Dialogs from "./components/Dialogs/Dialogs";
-import Settings from "./components/Settings/Settings";
-import {Route} from "react-router-dom";
 import News from "./components/News/News";
+import {Route} from "react-router-dom";
 import React from 'react';
 import './App.css';
-import store from "./Redux/state";
 
-const App = (props) => {
-
+const App = () => {
     return(
         <div className="app-wrapper">
             <Header />
             <Navbar />
             <div className="app-wrapper-content">
                 <Route path="/message"
-                       render={ () => <Dialogs
-                           store={props.store} /> }
+                       render={ () => <DialogsContainer /> }
                 />
                 <Route path="/profile"
-                       render={ () => <Profile
-                            dispatch={props.dispatch}
-                            profilePage={props.state.profilePage} /> }
+                       render={ () => <ProfileContainer /> }
+                />
+                <Route path="/users"
+                       render={ () => <UsersContainer /> }
                 />
                 <Route path="/settings" render={ () => <Settings /> } />
                 <Route path="/news" render={ () => <News /> } />
