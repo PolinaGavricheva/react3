@@ -5,7 +5,8 @@ import React from 'react';
 
 let mapStateToProps = (state) => {
     return {
-        messagePage: state.messagePage
+        messagePage: state.messagePage,
+        isAuth: state.auth.isAuth
     }
 }
 

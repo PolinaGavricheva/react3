@@ -8,6 +8,7 @@ import News from "./components/News/News";
 import {Route} from "react-router-dom";
 import React from 'react';
 import './App.css';
+import Login from "./components/Login/Login";
 
 const App = () => {
     return(
@@ -23,6 +24,9 @@ const App = () => {
                 />
                 <Route path="/users"
                        render={ () => <UsersContainer /> }
+                />
+                <Route path="/login"
+                       render={ () => <Login /> }
                 />
                 <Route path="/settings" render={ () => <Settings /> } />
                 <Route path="/news" render={ () => <News /> } />
